@@ -1,0 +1,20 @@
+{
+  "name": "minecraft-text-js",
+  "description": "",
+  "main": "dist/minecraft_text.js",
+  "authors": [
+    "OnikurYH <onikuryh@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Minecraft"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
