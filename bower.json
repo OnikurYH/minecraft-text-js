@@ -1,6 +1,6 @@
 {
   "name": "minecraft-text-js",
-  "description": "",
+  "description": "Turn your minecraft text to other format! =D",
   "main": "dist/minecraft_text.js",
   "authors": [
     "OnikurYH <onikuryh@gmail.com>"
