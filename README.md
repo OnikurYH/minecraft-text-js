@@ -55,7 +55,7 @@ MinecraftTextJS.refeashObfuscate();
 
 ## Build
 
-You can build this library by yourself
+You can build this library by yourself =P
 
 ### Pre-build requirements
 * git
@@ -75,4 +75,5 @@ The script will be built on the "dist" folder
 ---
 
 Develop by: OnikurYH
+
 Licanse: MIT
