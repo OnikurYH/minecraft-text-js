@@ -13,7 +13,9 @@ gulp.task("js", function () {
     presets: ["es2015"]
   }))
   .pipe(gulp.dest("dist"))
-  .pipe(uglify())
+  .pipe(uglify({
+    preserveComments: "license"  
+  }))
   .pipe(rename({ extname: '.min.js' }))
   .pipe(gulp.dest("dist"));
 })

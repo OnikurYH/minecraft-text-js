@@ -1,5 +1,11 @@
 "use strict";
 
+/*!
+ * minecraft-text.js
+ * Turn your minecraft text to other format! =D
+ * @author OnikurYH <onikuryh@gmail.com>
+ * @license MIT
+ */
 (function () {
   "use strict";
 
