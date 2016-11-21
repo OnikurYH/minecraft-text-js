@@ -17,7 +17,8 @@ gulp.task("js", function () {
     preserveComments: "license"  
   }))
   .pipe(rename({ extname: '.min.js' }))
-  .pipe(gulp.dest("dist"));
+  .pipe(gulp.dest("dist"))
+  .pipe(gulp.dest("docs/js"));
 })
 
 gulp.task("default", ["js"])

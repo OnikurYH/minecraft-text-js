@@ -12,6 +12,9 @@ Turn your minecraft text to other format! =D
 ## Examples
 You can find examples on the "examples" folder
 
+## Live demo
+You can see the demo on https://onikuryh.github.io/minecraft-text-js/
+
 ## Usage
 
 For formatting code, please see the Minecraft Official Wiki:
