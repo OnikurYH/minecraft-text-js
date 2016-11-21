@@ -127,7 +127,7 @@
     for (let i in obfuscates) {
       var obfuscateElement = obfuscates[i];
       var randStr = "";
-      for (let j in obfuscateElement.innerHTML.replace(/&(?:.|\n)*?;/gm, " "));
+      for (let j in obfuscateElement.innerHTML.replace(/&(?:.|\n)*?;/gm, " "))
         randStr += String.fromCharCode(randomRange(64, 95));
       obfuscateElement.innerHTML = randStr;
     }
