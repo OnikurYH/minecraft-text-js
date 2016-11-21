@@ -128,7 +128,9 @@
     window.cancelAnimationFrame(obfuscateAnimationReqeastId);
     obfuscates.length = 0;
 
-    obfuscates = Array.prototype.slice.call(document.getElementsByClassName("kurcraft-obfuscate"));
+    var fromElement = rootElement != null ? rootElement : document;
+
+    obfuscates = Array.prototype.slice.call(fromElement.getElementsByClassName("kurcraft-obfuscate"));
     obfuscateUpdate();
   }
 

@@ -38,10 +38,9 @@ var myMinecraftHTMLString = MinecraftTextJS.toHTML(myMinecraftString);
 ## API
 
 ### To HTML DOM String
+
+str - The string you want to convert to HTML DOM String
 ```javascript
-/**
- * @param String  str   The string you want to convert to HTML DOM String
- */
 MinecraftTextJS.toHTML(str);
 ```
 
@@ -49,8 +48,9 @@ MinecraftTextJS.toHTML(str);
 
 Use for after you have append a new HTML DOM String with obfuscate values
 
+rootElement (optional) - Refeash from element
 ```javascript
-MinecraftTextJS.refeashObfuscate();
+MinecraftTextJS.refeashObfuscate(rootElement?);
 ```
 
 ## Build
