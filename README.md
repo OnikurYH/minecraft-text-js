@@ -21,7 +21,7 @@ http://minecraft.gamepedia.com/Formatting_codes
 ### Browser Javascript
 ```javascript
 var myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D";
-var myMinecraftHTMLString = MinecraftTextJS.toHTML(myMinecraftString);
+var myMinecraftHTMLString = MinecraftTextJS.toHTML(myRawMinecraftString);
 document.getElementById("my_element").innerHTML = myMinecraftHTMLString;
 // Make obfuscate (&k) animate
 MinecraftTextJS.refeashObfuscate();
@@ -32,7 +32,7 @@ MinecraftTextJS.refeashObfuscate();
 const MinecraftTextJS = require('minecraft-text-js');
 
 var myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D";
-var myMinecraftHTMLString = MinecraftTextJS.toHTML(myMinecraftString);
+var myMinecraftHTMLString = MinecraftTextJS.toHTML(myRawMinecraftString);
 ```
 
 ## API
