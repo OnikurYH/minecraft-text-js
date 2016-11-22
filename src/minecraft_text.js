@@ -134,6 +134,9 @@
   }
 
   function refeashObfuscate (rootElement) {
+    if (typeof window === 'undefined')
+      return console.warn("[MinecraftTextJS] refeashObfuscate(rootElement?) only support on browser");
+
     window.cancelAnimationFrame(obfuscateAnimationReqeastId);
     obfuscates.length = 0;
 
@@ -143,6 +146,20 @@
     obfuscateUpdate();
   }
 
+  function initJQuery ($) {
+    $.fn.minecraftTextJS = function () {
+      this.toHTML = function (text) {
+        var mText = externalFn.toHTML(text);
+        this.html(mText);
+      };
+
+      this.refeashObfuscate = function () {
+        externalFn.refeashObfuscate(this[0]);
+      };
+
+      return this;
+    };
+  }
   
   const externalFn = {
     toHTML: toHTML,
@@ -150,8 +167,16 @@
   };
 
   const hasRequire = (typeof require !== 'undefined');
-  if (hasRequire)
+  if (hasRequire) {
     module.exports = externalFn;
-  else
+    try {
+      // Try init NodeJS jQuery
+      initJQuery(require("jquery"));
+    } catch (ex) {}
+  } else {
     window.MinecraftTextJS = externalFn;
-}).call(this);
+    // Init jQuery in browser
+    if (typeof jQuery !== 'undefined')
+      initJQuery(jQuery);
+  }
+}());
