@@ -16,6 +16,13 @@ You can find examples on the "examples" folder
 ## Live demo
 You can see the demo on https://onikuryh.github.io/minecraft-text-js/
 
+## Installation
+| Package | Command                                                       |
+|---------|---------------------------------------------------------------|
+| None    | `git clone https://github.com/OnikurYH/minecraft-text-js.git` |
+| Bower   | `bower install --save minecraft-text-js`                      |
+| NPM     | `npm i --save minecraft-text-js`                              |
+
 ## Usage
 
 For formatting code, please see the Minecraft Official Wiki:
