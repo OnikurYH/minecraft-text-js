@@ -17,11 +17,43 @@
     text-align: center;
   }
 
-  #demoText {
+  .upper-container {
     background-color: #FFF;
+    padding: 10vh 20px 10px 20px;
+  }
+
+  .upper-container p {
     font-family: monospace, sans-serif;
     font-size: 16pt;
-    padding: 20px 0px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 720px) {
+    .upper-container p {
+      font-size: 3.5vw;
+    }
+  }
+
+  label[for="txtDemoText"] {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: #888;
+  }
+
+  #txtDemoText {
+    display: block;
+
+    font-size: 12pt;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    outline: 0;
+    padding: 5px 10px;
+
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .footer {
@@ -36,18 +68,32 @@
   </style>
 </head>
 <body>
-  <p id="demoText"></p>
+  <div class="upper-container">
+    <p id="demoText"></p>
+    <label for="txtDemoText">Try to change the upper text by this input field</label>
+    <input id="txtDemoText" type="text">
+  </div>
   <div class="footer">View on
-    <a href="https://github.com/OnikurYH/minecraft-text-js">GitHub</a> MinecraftTextJS
-    <a class="github-button" href="https://github.com/OnikurYH/minecraft-text-js" data-icon="octicon-star" data-count-href="/OnikurYH/minecraft-text-js/stargazers" data-count-api="/repos/OnikurYH/minecraft-text-js#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star OnikurYH/minecraft-text-js on GitHub">Star</a>  
+    <a href="https://github.com/OnikurYH/minecraft-text-js">GitHub</a> MinecraftTextJS |
+    By <a href="https://github.com/OnikurYH">OnikurYH</a>
+    <a class="github-button" href="https://github.com/OnikurYH/minecraft-text-js" data-icon="octicon-star" data-count-href="/OnikurYH/minecraft-text-js/stargazers" data-count-api="/repos/OnikurYH/minecraft-text-js#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star OnikurYH/minecraft-text-js on GitHub">Star</a>
   </div>
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script type="text/javascript" src="js/minecraft_text.min.js"></script>
   <script type="text/javascript">
-    var demoText = document.getElementById("demoText")
-    demoText.innerHTML = MinecraftTextJS.toHTML("&3This &nis&r &ma&r &9&o&lMinecraft&9&lText&6&lJS &k12345&6, Ya&r&6! &r&0=D")
-    MinecraftTextJS.refeashObfuscate()
+    var demoText = document.getElementById("demoText");
+    var txtDemoText = document.getElementById("txtDemoText");
+
+    function updateDemoText () {
+      demoText.innerHTML = MinecraftTextJS.toHTML(txtDemoText.value);
+      MinecraftTextJS.refeashObfuscate(demoText);
+    }
+    txtDemoText.value = "&3This &nis&r &ma&r &9&o&lMinecraft&9&lText&6&lJS &k12345&6, Ya&r&6! &r&0=D";
+    txtDemoText.addEventListener("input", updateDemoText);
+
+    // Init default text ------------------------------------------------------/
+    updateDemoText()
   </script>
 </body>
 </html>
