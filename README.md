@@ -7,6 +7,7 @@ Turn your minecraft text to other format! =D
 ## Features
 * Convert to HTML DOM
 * Accept & and §
+* Support HTML DOM, jQuery and Node.js!
 * ... More feature on the future!
 
 ## Examples
@@ -27,6 +28,25 @@ var myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &
 var myMinecraftHTMLString = MinecraftTextJS.toHTML(myRawMinecraftString);
 document.getElementById("my_element").innerHTML = myMinecraftHTMLString;
 // Make obfuscate (&k) animate
+MinecraftTextJS.refeashObfuscate();
+```
+
+### jQuery
+#### Method 1 (For single element)
+```javascript
+var myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D";
+var myElement = $("my_element").minecraftTextJS()
+myElement.toHTML(myRawMinecraftString);
+// Make obfuscate (&k) animate on this element
+myElement.refeashObfuscate();
+```
+#### Method 2 (For multi element)
+```javascript
+var myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D";
+var myElement = $("my_element");
+var myMinecraftHTMLString = MinecraftTextJS.toHTML(myRawMinecraftString);
+myElement.html(myMinecraftHTMLString);
+// Make obfuscate (&k) animate on global
 MinecraftTextJS.refeashObfuscate();
 ```
 
