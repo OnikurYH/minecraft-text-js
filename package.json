@@ -1,6 +1,6 @@
 {
   "name": "minecraft-text-js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Turn your minecraft text to other format! =D",
   "main": "index.js",
   "scripts": {
