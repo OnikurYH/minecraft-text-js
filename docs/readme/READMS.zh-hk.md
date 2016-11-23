@@ -6,7 +6,7 @@
 
 其他語言：
 [English](https://github.com/OnikurYH/minecraft-text-js/blob/master/README.md) |
-[正體中文](https://github.com/OnikurYH/minecraft-text-js/tree/master/docs/readme/README.zh-hk.md)
+[正體中文](https://github.com/OnikurYH/minecraft-text-js/blob/master/docs/readme/READMS.zh-hk.md)
 
 ## 特點
 * 轉換為 HTML DOM
