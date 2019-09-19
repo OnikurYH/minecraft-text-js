@@ -12,6 +12,7 @@ Other languages:
 * Convert to HTML DOM
 * Accept & and §
 * Support HTML DOM, jQuery and Node.js!
+* Written in TypeScript
 * ... More feature on the future!
 
 ## Examples
@@ -24,8 +25,8 @@ You can see the demo on https://onikuryh.github.io/minecraft-text-js/
 | Package | Command                                                       |
 |---------|---------------------------------------------------------------|
 | None    | `git clone https://github.com/OnikurYH/minecraft-text-js.git` |
-| Bower   | `bower install --save minecraft-text-js`                      |
-| NPM     | `npm i --save minecraft-text-js`                              |
+| NPM     | `npm install --save minecraft-text-js`                        |
+| Yarn    | `yarn add minecraft-text-js`                                  |
 
 ## Usage
 
@@ -35,38 +36,47 @@ http://minecraft.gamepedia.com/Formatting_codes
 
 ### Browser Javascript
 ```javascript
-var myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D";
-var myMinecraftHTMLString = MinecraftTextJS.toHTML(myRawMinecraftString);
-document.getElementById("my_element").innerHTML = myMinecraftHTMLString;
+var myRawMinecraftString = '&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D';
+var myMinecraftHTMLString = MinecraftText.toHTML(myRawMinecraftString);
+document.getElementById('my-element').innerHTML = myMinecraftHTMLString;
 // Make obfuscate (&k) animate
-MinecraftTextJS.refeashObfuscate();
+MinecraftText.refeashObfuscate();
 ```
 
 ### jQuery
 #### Method 1 (For single element)
 ```javascript
-var myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D";
-var myElement = $("my_element").minecraftTextJS()
+var myRawMinecraftString = '&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D';
+var myElement = $('my_element').minecraftText();
 myElement.toHTML(myRawMinecraftString);
 // Make obfuscate (&k) animate on this element
 myElement.refeashObfuscate();
 ```
 #### Method 2 (For multi element)
 ```javascript
-var myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D";
-var myElement = $("my_element");
-var myMinecraftHTMLString = MinecraftTextJS.toHTML(myRawMinecraftString);
+var myRawMinecraftString = '&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D';
+var myElement = $('my_element');
+var myMinecraftHTMLString = MinecraftText.toHTML(myRawMinecraftString);
 myElement.html(myMinecraftHTMLString);
 // Make obfuscate (&k) animate on global
-MinecraftTextJS.refeashObfuscate();
+MinecraftText.refeashObfuscate();
 ```
 
 ### Node.JS
+#### JavaScript
 ```javascript
-const MinecraftTextJS = require('minecraft-text-js');
+const MinecraftText = require('minecraft-text-js');
 
-var myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D";
-var myMinecraftHTMLString = MinecraftTextJS.toHTML(myRawMinecraftString);
+var myRawMinecraftString = '&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D';
+var myMinecraftHTMLString = MinecraftText.toHTML(myRawMinecraftString);
+```
+
+#### TypeScript
+```typescript
+import MinecraftTextJS from 'minecraft-text-js';
+
+const myRawMinecraftString = "&3This &nis&r &ma&r &5&oMinecraft &lstyle &6&ltext &ka&6, Ya&r&6! &r&0=D";
+const myMinecraftHTMLString = MinecraftTextJS.toHTML(myRawMinecraftString);
 ```
 
 ## API
@@ -75,7 +85,7 @@ var myMinecraftHTMLString = MinecraftTextJS.toHTML(myRawMinecraftString);
 
 str - The string you want to convert to HTML DOM String
 ```javascript
-MinecraftTextJS.toHTML(str);
+MinecraftText.toHTML(str);
 ```
 
 ### Refresh obfuscate animation
@@ -84,7 +94,7 @@ Use for after you have append a new HTML DOM String with obfuscate values
 
 rootElement (optional) - Refresh from element
 ```javascript
-MinecraftTextJS.refeashObfuscate(rootElement?);
+MinecraftText.refeashObfuscate(rootElement?);
 ```
 
 ## Build
@@ -93,16 +103,16 @@ You can build this library by yourself =P
 
 ### Pre-build requirements
 * git
-* nodejs >= 4.0
-* gulp >= 2
+* Node.js >= 10.16.0
+* Yarn >= 1.17.3
 
-Open cmd (Windows) or Terminal (Mac OS X / Linux)
+Open command-line terminal
 ```sh
 cd /where/you/want/to/clone/into
 git https://github.com/OnikurYH/minecraft-text-js.git
 cd minecraft-text-js
-npm install
-gulp
+yarn install
+yarn build
 ```
 The script will be built on the "dist" folder
 
