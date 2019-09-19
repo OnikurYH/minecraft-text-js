@@ -1,6 +1,6 @@
 {
   "name": "minecraft-text-js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Turn your minecraft text to other format! =D",
   "main": "dist/minecraft_text.js",
   "module": "dist/minecraft_text.esm.js",
