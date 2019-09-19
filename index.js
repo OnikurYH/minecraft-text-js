@@ -1,1 +1,1 @@
-module.exports = require("./dist/minecraft_text")
+module.exports = require('./dist/minecraft_text');
