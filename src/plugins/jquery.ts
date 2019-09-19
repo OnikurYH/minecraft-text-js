@@ -1,9 +1,9 @@
 import { toHTML } from '../functions/to-html';
 import { refeashObfuscate } from '../functions/obfuscate';
 
-function initJQuery ($) {
+function initJQuery ($: JQueryStatic) {
   $.fn.minecraftText = function () {
-    this.toHTML = function (text) {
+    this.toHTML = function (text: string) {
       this.html(toHTML(text));
     };
 

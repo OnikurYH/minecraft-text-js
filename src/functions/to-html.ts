@@ -1,6 +1,6 @@
 import { COLOR_CODES, STYLE_CODES } from '../constants';
 
-export function toHTML (text) {
+export function toHTML (text: string) {
   let output = '';
 
   let lastColorLevel = 0;
