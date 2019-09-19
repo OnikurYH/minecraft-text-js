@@ -19,6 +19,15 @@ export default [
   },
   {
     input: 'src/index.js',
+    output: {
+      file: 'dist/minecraft_text.esm.js',
+      format: 'esm',
+      name: 'MinecraftText',
+    },
+    plugins: [...plugins],
+  },
+  {
+    input: 'src/index.js',
     output: [
       {
         file: 'dist/minecraft_text.min.js',
