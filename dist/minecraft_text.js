@@ -1,114 +1,166 @@
-"use strict";
-
-/*!
- * minecraft-text.js
- * Turn your minecraft text to other format! =D
- * @author OnikurYH <onikuryh@gmail.com>
- * @license MIT
- */
-(function () {
-  "use strict";
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, global.MinecraftText = factory());
+}(this, function () { 'use strict';
 
   var COLOR_CODES = {
-    "0": "#000000",
-    "1": "#0000AA",
-    "2": "#00AA00",
-    "3": "#00AAAA",
-    "4": "#AA0000",
-    "5": "#AA00AA",
-    "6": "#FFAA00",
-    "7": "#AAAAAA",
-    "8": "#555555",
-    "9": "#5555FF",
-    "a": "#55FF55",
-    "b": "#55FFFF",
-    "c": "#FF5555",
-    "d": "#FF55FF",
-    "e": "#FFFF55",
-    "f": "#FFFFFF"
+    0: {
+      inline: '#000000',
+      className: ''
+    },
+    1: {
+      inline: '#0000AA',
+      className: ''
+    },
+    2: {
+      inline: '#00AA00',
+      className: ''
+    },
+    3: {
+      inline: '#00AAAA',
+      className: ''
+    },
+    4: {
+      inline: '#AA0000',
+      className: ''
+    },
+    5: {
+      inline: '#AA00AA',
+      className: ''
+    },
+    6: {
+      inline: '#FFAA00',
+      className: ''
+    },
+    7: {
+      inline: '#AAAAAA',
+      className: ''
+    },
+    8: {
+      inline: '#555555',
+      className: ''
+    },
+    9: {
+      inline: '#5555FF',
+      className: ''
+    },
+    a: {
+      inline: '#55FF55',
+      className: ''
+    },
+    b: {
+      inline: '#55FFFF',
+      className: ''
+    },
+    c: {
+      inline: '#FF5555',
+      className: ''
+    },
+    d: {
+      inline: '#FF55FF',
+      className: ''
+    },
+    e: {
+      inline: '#FFFF55',
+      className: ''
+    },
+    f: {
+      inline: '#FFFFFF',
+      className: ''
+    }
   };
-
   var STYLE_CODES = {
-    "l": "font-weight: bold;",
-    "m": "text-decoration: line-through;",
-    "n": "text-decoration: underline;",
-    "o": "font-style: italic;"
+    l: {
+      inline: 'font-weight: bold',
+      className: ''
+    },
+    m: {
+      inline: 'text-decoration: line-through',
+      className: ''
+    },
+    n: {
+      inline: 'text-decoration: underline',
+      className: ''
+    },
+    o: {
+      inline: 'font-style: italic',
+      className: ''
+    }
   };
-
-  var obfuscates = [];
-  var obfuscateAnimationReqeastId = -1;
 
   function toHTML(text) {
-    var output = "";
-
+    var output = '';
     var lastColorLevel = 0;
     var lastStyleLevel = 0;
-
     var obfuscating = false;
 
     function cleanStyles() {
-      for (var _i = 0; _i < lastColorLevel + lastStyleLevel; _i++) {
-        output += "</span>";
+      for (var i = 0; i < lastColorLevel + lastStyleLevel; i++) {
+        output += '</span>';
       }
+
       lastColorLevel = lastStyleLevel = 0;
     }
 
     for (var i = 0; i < text.length; i++) {
-      var char = text[i];
+      var _char = text[i];
 
-      if (char === "&" || char === "\xA7") {
+      if (_char === '&' || _char === "\xA7") {
         var nextCode = text[i + 1];
+        var lastStyle = COLOR_CODES[nextCode]; // Is color?
 
-        var lastStyle = COLOR_CODES[nextCode];
-        // Is color? --------------------------------------------------------/
         if (lastStyle != null) {
-          if (lastColorLevel > 0 || lastStyleLevel > 0) cleanStyles();
+          if (lastColorLevel > 0 || lastStyleLevel > 0) {
+            cleanStyles();
+          }
 
           if (obfuscating) {
-            output += "</span>";
+            output += '</span>';
             obfuscating = false;
           }
 
-          output += "<span style=\"color: " + lastStyle + ";\">";
+          output += "<span style=\"color: ".concat(lastStyle.inline, ";\">");
           lastColorLevel++;
           i++;
           continue;
         }
 
-        lastStyle = STYLE_CODES[nextCode];
-        // Is style? --------------------------------------------------------/
-        if (lastStyle != null) {
-          if (obfuscating) output += "</span>";
+        lastStyle = STYLE_CODES[nextCode]; // Is style?
 
-          output += "<span style=\"" + lastStyle + "\">";
+        if (lastStyle != null) {
+          if (obfuscating) output += '</span>';
+          output += "<span style=\"".concat(lastStyle.inline, ";\">");
           lastStyleLevel++;
           i++;
-
-          if (obfuscating) output += "<span class=\"kurcraft-obfuscate\">";
+          if (obfuscating) output += '<span class="kurcraft-obfuscate">';
           continue;
-        }
+        } // Is obfuscate?
 
-        // Is obfuscate -----------------------------------------------------/
-        if (nextCode === "k") {
+
+        if (nextCode === 'k') {
           obfuscating = true;
-          output += "<span class=\"kurcraft-obfuscate\">";
+          output += '<span class="kurcraft-obfuscate">';
           i++;
           continue;
-        }
+        } // Is reset?
 
-        // Is reset? --------------------------------------------------------/
-        if (nextCode === "r") {
+
+        if (nextCode === 'r') {
           cleanStyles();
           i++;
           continue;
         }
       }
 
-      if (char === " ") char = "&nbsp;";
+      if (_char === ' ') {
+        _char = '&nbsp;';
+      }
 
-      output += char;
+      output += _char;
     }
 
+    cleanStyles();
     return output;
   }
 
@@ -116,62 +168,73 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  var obfuscates = [];
+  var obfuscateAnimationReqeastId = -1;
   function obfuscateUpdate() {
     if (obfuscates == null || obfuscates.length === 0) return;
-
     obfuscateAnimationReqeastId = window.requestAnimationFrame(obfuscateUpdate);
 
     for (var i in obfuscates) {
       var obfuscateElement = obfuscates[i];
-      var randStr = "";
-      for (var j in obfuscateElement.innerHTML.replace(/&(?:.|\n)*?;/gm, " ")) {
+      var randStr = '';
+
+      for (var j in obfuscateElement.innerHTML.replace(/&(?:.|\n)*?;/gm, ' ')) {
         randStr += String.fromCharCode(randomRange(64, 95));
-      }obfuscateElement.innerHTML = randStr;
+      }
+
+      obfuscateElement.innerHTML = randStr;
     }
   }
-
   function refeashObfuscate(rootElement) {
     if (typeof window === 'undefined') return console.warn("[MinecraftTextJS] refeashObfuscate(rootElement?) only support on browser");
-
     window.cancelAnimationFrame(obfuscateAnimationReqeastId);
     obfuscates.length = 0;
-
-    var fromElement = rootElement != null ? rootElement : document;
-
+    var fromElement = rootElement || document;
     obfuscates = Array.prototype.slice.call(fromElement.getElementsByClassName("kurcraft-obfuscate"));
     obfuscateUpdate();
   }
 
   function initJQuery($) {
-    $.fn.minecraftTextJS = function () {
+    $.fn.minecraftText = function () {
       this.toHTML = function (text) {
-        var mText = externalFn.toHTML(text);
-        this.html(mText);
+        this.html(toHTML(text));
       };
 
       this.refeashObfuscate = function () {
-        externalFn.refeashObfuscate(this[0]);
+        refeashObfuscate(this[0]);
       };
 
       return this;
     };
   }
 
-  var externalFn = {
+  var jQuery = null;
+
+  try {
+    if (typeof self !== 'undefined') {
+      jQuery = self.jQuery;
+    }
+
+    if (typeof require !== 'undefined') {
+      jQuery = require('jquery');
+    }
+  } catch (err) {}
+
+  if (jQuery) {
+    initJQuery(jQuery);
+  }
+
+  /*!
+   * minecraft-text.js
+   * Turn your minecraft text to other format! =D
+   * @author OnikurYH <onikuryh@gmail.com>
+   * @license MIT
+   */
+  var index = {
     toHTML: toHTML,
     refeashObfuscate: refeashObfuscate
   };
 
-  var hasRequire = typeof require !== 'undefined';
-  if (hasRequire) {
-    module.exports = externalFn;
-    try {
-      // Try init NodeJS jQuery
-      initJQuery(require("jquery"));
-    } catch (ex) {}
-  } else {
-    window.MinecraftTextJS = externalFn;
-    // Init jQuery in browser
-    if (typeof jQuery !== 'undefined') initJQuery(jQuery);
-  }
-})();
+  return index;
+
+}));
