@@ -2,8 +2,15 @@
   "name": "minecraft-text-js",
   "version": "0.0.5",
   "description": "Turn your minecraft text to other format! =D",
-  "main": "index.js",
+  "main": "dist/minecraft_text.js",
+  "module": "dist/minecraft_text.esm.js",
+  "keywords": [
+    "minecraft"
+  ],
   "browserslist": "> 0.2%, not dead",
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
     "build": "rollup --config",
     "test": "jest test"
