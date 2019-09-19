@@ -25,18 +25,10 @@ export default [
   {
     ...baseConfig,
     output: {
-      file: 'dist/minecraft_text.js',
-      format: 'umd',
-      name: 'MinecraftText',
-    },
-    plugins: [...plugins],
-  },
-  {
-    ...baseConfig,
-    output: {
       file: 'dist/minecraft_text.esm.js',
       format: 'esm',
       name: 'MinecraftText',
+      sourcemap: true,
     },
     plugins: [...plugins],
   },
@@ -47,6 +39,7 @@ export default [
         file: 'dist/minecraft_text.min.js',
         format: 'umd',
         name: 'MinecraftText',
+        sourcemap: true,
       },
       {
         file: 'docs/js/minecraft_text.min.js',

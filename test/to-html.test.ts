@@ -1,4 +1,4 @@
-const MinecraftText = require('..');
+import MinecraftText from '..';
 
 describe('toHTML', () => {
   describe('when call with text with color', () => {

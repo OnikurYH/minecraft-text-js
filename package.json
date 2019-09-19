@@ -2,7 +2,8 @@
   "name": "minecraft-text-js",
   "version": "0.0.6",
   "description": "Turn your minecraft text to other format! =D",
-  "main": "dist/minecraft_text.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
   "module": "dist/minecraft_text.esm.js",
   "keywords": [
     "minecraft"
@@ -13,9 +14,9 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && npm run build:js && npm run build:types",
+    "build": "npm run clean && npm run build:cjs && npm run build:js",
+    "build:cjs": "tsc",
     "build:js": "rollup --config",
-    "build:types": "tsc --emitDeclarationOnly",
     "test": "jest test"
   },
   "repository": {
@@ -28,6 +29,7 @@
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-typescript": "^7.6.0",
+    "@types/jest": "^24.0.18",
     "@types/jquery": "^3.3.31",
     "@types/node": "^12.7.5",
     "jest": "^24.9.0",

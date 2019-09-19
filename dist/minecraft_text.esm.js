@@ -228,3 +228,4 @@ var index = {
 };
 
 export default index;
+//# sourceMappingURL=minecraft_text.esm.js.map
