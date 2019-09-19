@@ -3,8 +3,10 @@
   "version": "0.0.5",
   "description": "Turn your minecraft text to other format! =D",
   "main": "index.js",
+  "browserslist": "> 0.2%, not dead",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup --config",
+    "test": "jest test"
   },
   "repository": {
     "type": "git",
@@ -13,11 +15,15 @@
   "author": "OnikurYH <onikuryh@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
     "babel-preset-es2015": "^6.18.0",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-eslint": "^3.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^2.0.0"
+    "jest": "^24.9.0",
+    "rollup": "^1.21.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-babel-minify": "^9.0.0"
+  },
+  "peerDependencies": {
+    "jquery": "^2.1.0"
   }
 }
