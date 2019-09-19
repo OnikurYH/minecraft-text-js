@@ -19,11 +19,18 @@ export default [
   },
   {
     input: 'src/index.js',
-    output: {
-      file: 'dist/minecraft_text.min.js',
-      format: 'umd',
-      name: 'MinecraftText',
-    },
+    output: [
+      {
+        file: 'dist/minecraft_text.min.js',
+        format: 'umd',
+        name: 'MinecraftText',
+      },
+      {
+        file: 'docs/js/minecraft_text.min.js',
+        format: 'umd',
+        name: 'MinecraftText',
+      },
+    ],
     plugins: [
       ...plugins,
       minify(),
