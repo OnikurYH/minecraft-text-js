@@ -1,15 +1,29 @@
 import babel from 'rollup-plugin-babel';
+import resolve from 'rollup-plugin-node-resolve';
 import minify from 'rollup-plugin-babel-minify';
 
+const baseConfig = {
+  input: 'src/index.ts',
+  external: [
+    'jquery'
+  ],
+};
+
+const extensions = [
+  '.js', '.ts',
+];
+
 const plugins = [
+  resolve({ extensions }),
   babel({
+    extensions,
     exclude: 'node_modules/**',
   }),
 ];
 
 export default [
   {
-    input: 'src/index.js',
+    ...baseConfig,
     output: {
       file: 'dist/minecraft_text.js',
       format: 'umd',
@@ -18,7 +32,7 @@ export default [
     plugins: [...plugins],
   },
   {
-    input: 'src/index.js',
+    ...baseConfig,
     output: {
       file: 'dist/minecraft_text.esm.js',
       format: 'esm',
@@ -27,7 +41,7 @@ export default [
     plugins: [...plugins],
   },
   {
-    input: 'src/index.js',
+    ...baseConfig,
     output: [
       {
         file: 'dist/minecraft_text.min.js',

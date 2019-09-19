@@ -177,8 +177,9 @@
     for (var i in obfuscates) {
       var obfuscateElement = obfuscates[i];
       var randStr = '';
+      var elementStr = obfuscateElement.innerHTML.replace(/&(?:.|\n)*?;/gm, ' ');
 
-      for (var j in obfuscateElement.innerHTML.replace(/&(?:.|\n)*?;/gm, ' ')) {
+      for (var j = 0; j < elementStr.length; j++) {
         randStr += String.fromCharCode(randomRange(64, 95));
       }
 
@@ -186,11 +187,14 @@
     }
   }
   function refeashObfuscate(rootElement) {
-    if (typeof window === 'undefined') return console.warn("[MinecraftTextJS] refeashObfuscate(rootElement?) only support on browser");
+    if (typeof window === 'undefined') {
+      return console.warn('[MinecraftTextJS] refeashObfuscate(rootElement?) only support on browser');
+    }
+
     window.cancelAnimationFrame(obfuscateAnimationReqeastId);
     obfuscates.length = 0;
     var fromElement = rootElement || document;
-    obfuscates = Array.prototype.slice.call(fromElement.getElementsByClassName("kurcraft-obfuscate"));
+    obfuscates = Array.prototype.slice.call(fromElement.getElementsByClassName('kurcraft-obfuscate'));
     obfuscateUpdate();
   }
 
@@ -224,12 +228,6 @@
     initJQuery(jQuery);
   }
 
-  /*!
-   * minecraft-text.js
-   * Turn your minecraft text to other format! =D
-   * @author OnikurYH <onikuryh@gmail.com>
-   * @license MIT
-   */
   var index = {
     toHTML: toHTML,
     refeashObfuscate: refeashObfuscate

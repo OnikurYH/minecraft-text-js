@@ -1,6 +1,6 @@
 import { randomRange } from '../utils';
 
-let obfuscates = [];
+let obfuscates: Element[] = [];
 let obfuscateAnimationReqeastId = -1;
 
 export function obfuscateUpdate () {
@@ -11,23 +11,25 @@ export function obfuscateUpdate () {
 
   for (let i in obfuscates) {
     const obfuscateElement = obfuscates[i];
-    const randStr = '';
-    for (let j in obfuscateElement.innerHTML.replace(/&(?:.|\n)*?;/gm, ' ')) {
+    let randStr = '';
+    const elementStr = obfuscateElement.innerHTML.replace(/&(?:.|\n)*?;/gm, ' ');
+    for (let j = 0; j < elementStr.length; j++) {
       randStr += String.fromCharCode(randomRange(64, 95));
     }
     obfuscateElement.innerHTML = randStr;
   }
 }
 
-export function refeashObfuscate (rootElement) {
-  if (typeof window === 'undefined')
-    return console.warn("[MinecraftTextJS] refeashObfuscate(rootElement?) only support on browser");
+export function refeashObfuscate (rootElement: HTMLElement) {
+  if (typeof window === 'undefined') {
+    return console.warn('[MinecraftTextJS] refeashObfuscate(rootElement?) only support on browser');
+  }
 
   window.cancelAnimationFrame(obfuscateAnimationReqeastId);
   obfuscates.length = 0;
 
   const fromElement = rootElement || document;
 
-  obfuscates = Array.prototype.slice.call(fromElement.getElementsByClassName("kurcraft-obfuscate"));
+  obfuscates = Array.prototype.slice.call(fromElement.getElementsByClassName('kurcraft-obfuscate'));
   obfuscateUpdate();
 }

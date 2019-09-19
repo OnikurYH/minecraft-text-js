@@ -12,7 +12,10 @@
     "node": ">=8"
   },
   "scripts": {
-    "build": "rollup --config",
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run build:js && npm run build:types",
+    "build:js": "rollup --config",
+    "build:types": "tsc --emitDeclarationOnly",
     "test": "jest test"
   },
   "repository": {
@@ -24,12 +27,18 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/jquery": "^3.3.31",
+    "@types/node": "^12.7.5",
     "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
     "rollup": "^1.21.4",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-babel-minify": "^9.0.0"
+    "rollup-plugin-babel-minify": "^9.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "typescript": "^3.6.3"
   },
   "peerDependencies": {
-    "jquery": "^2.1.0"
+    "jquery": "^3.4.1"
   }
 }

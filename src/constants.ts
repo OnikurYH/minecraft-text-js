@@ -1,4 +1,11 @@
-export const COLOR_CODES = {
+export interface CodesSettings {
+  [code: string]: {
+    inline: string;
+    className: string;
+  };
+}
+
+export const COLOR_CODES: CodesSettings = {
   0: {
     inline: '#000000',
     className: '',
@@ -65,7 +72,7 @@ export const COLOR_CODES = {
   },
 };
 
-export const STYLE_CODES = {
+export const STYLE_CODES: CodesSettings = {
   l: {
     inline: 'font-weight: bold',
     className: '',
