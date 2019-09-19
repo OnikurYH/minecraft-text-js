@@ -7,7 +7,3 @@ export default {
   toHTML,
   refeashObfuscate,
 };
-
-declare interface ABC {
-  b: string;
-}
