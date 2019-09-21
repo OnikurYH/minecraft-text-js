@@ -103,8 +103,14 @@ function toHTML(text) {
 
     if (_char === '\\' && nextCode === 'n') {
       cleanStyles();
-      _char = '<br>';
+      output += '<br>';
       i += 1;
+      continue;
+    }
+
+    if (_char === ' ') {
+      output += '&nbsp;';
+      continue;
     }
 
     if (_char === '&' || _char === "\xA7") {
@@ -153,11 +159,7 @@ function toHTML(text) {
       }
     }
 
-    if (_char === ' ') {
-      _char = '&nbsp;';
-    }
-
-    output += _char;
+    output += encodeURIComponent(_char);
   }
 
   cleanStyles();

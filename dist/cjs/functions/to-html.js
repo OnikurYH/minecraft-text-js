@@ -13,12 +13,17 @@ function toHTML(text) {
         lastColorLevel = lastStyleLevel = 0;
     }
     for (let i = 0; i < text.length; i += 1) {
-        let char = text[i];
+        const char = text[i];
         const nextCode = text[i + 1];
         if (char === '\\' && nextCode === 'n') {
             cleanStyles();
-            char = '<br>';
+            output += '<br>';
             i += 1;
+            continue;
+        }
+        if (char === ' ') {
+            output += '&nbsp;';
+            continue;
         }
         if (char === '&' || char === '\u00A7') {
             let lastStyle = constants_1.COLOR_CODES[nextCode];
@@ -62,10 +67,7 @@ function toHTML(text) {
                 continue;
             }
         }
-        if (char === ' ') {
-            char = '&nbsp;';
-        }
-        output += char;
+        output += encodeURIComponent(char);
     }
     cleanStyles();
     return output;
