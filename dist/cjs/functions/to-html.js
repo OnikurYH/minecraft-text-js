@@ -14,6 +14,12 @@ function toHTML(text) {
     }
     for (let i = 0; i < text.length; i++) {
         let char = text[i];
+        let nextChar = text[i + 1];
+        if (char === '\\' && nextChar === 'n') {
+            output += '<br>';
+            i += 2;
+            continue;
+        }
         if (char === '&' || char === '\u00A7') {
             let nextCode = text[i + 1];
             let lastStyle = constants_1.COLOR_CODES[nextCode];
