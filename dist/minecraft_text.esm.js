@@ -97,18 +97,17 @@ function toHTML(text) {
     lastColorLevel = lastStyleLevel = 0;
   }
 
-  for (var i = 0; i < text.length; i++) {
+  for (var i = 0; i < text.length; i += 1) {
     var _char = text[i];
-    var nextChar = text[i + 1];
+    var nextCode = text[i + 1];
 
-    if (_char === '\\' && nextChar === 'n') {
-      output += '<br>';
-      i += 2;
-      continue;
+    if (_char === '\\' && nextCode === 'n') {
+      cleanStyles();
+      _char = '<br>';
+      i += 1;
     }
 
     if (_char === '&' || _char === "\xA7") {
-      var nextCode = text[i + 1];
       var lastStyle = COLOR_CODES[nextCode]; // Is color?
 
       if (lastStyle != null) {

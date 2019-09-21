@@ -15,19 +15,17 @@ export function toHTML (text: string) {
     lastColorLevel = lastStyleLevel = 0;
   }
 
-  for (let i = 0; i < text.length; i++) {
+  for (let i = 0; i < text.length; i += 1) {
     let char = text[i];
-    let nextChar = text[i + 1];
+    const nextCode = text[i + 1];
 
-    if (char === '\\' && nextChar === 'n') {
-      output += '<br>';
-      i += 2;
-      continue;
+    if (char === '\\' && nextCode === 'n') {
+      cleanStyles();
+      char = '<br>';
+      i += 1;
     }
 
     if (char === '&' || char === '\u00A7') {
-      let nextCode = text[i + 1];
-
       let lastStyle = COLOR_CODES[nextCode];
       // Is color?
       if (lastStyle != null) {
