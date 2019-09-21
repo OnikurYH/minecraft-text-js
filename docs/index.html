@@ -86,8 +86,8 @@
     var txtDemoText = document.getElementById("txtDemoText");
 
     function updateDemoText () {
-      demoText.innerHTML = MinecraftTextJS.toHTML(txtDemoText.value);
-      MinecraftTextJS.refeashObfuscate(demoText);
+      demoText.innerHTML = MinecraftText.toHTML(txtDemoText.value);
+      MinecraftText.refeashObfuscate(demoText);
     }
     txtDemoText.value = "&3This &nis&r &ma&r &9&o&lMinecraft&9&lText&6&lJS &k12345&6, Ya&r&6! &r&0=D";
     txtDemoText.addEventListener("input", updateDemoText);
