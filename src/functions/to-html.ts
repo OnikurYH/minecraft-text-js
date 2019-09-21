@@ -1,4 +1,5 @@
 import { COLOR_CODES, STYLE_CODES } from '../constants';
+import { stringToHtmlEntities } from '../utils';
 
 export function toHTML (text: string) {
   let output = '';
@@ -81,7 +82,7 @@ export function toHTML (text: string) {
       }
     }
 
-    output += encodeURIComponent(char);
+    output += stringToHtmlEntities(char);
   }
 
   cleanStyles();

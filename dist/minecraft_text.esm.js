@@ -83,6 +83,15 @@ var STYLE_CODES = {
   }
 };
 
+function randomRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function stringToHtmlEntities(str) {
+  return str.replace(/[\u00A0-\u9999<>\&]/gim, function (c) {
+    return "&#".concat(c.charCodeAt(0), ";");
+  });
+}
+
 function toHTML(text) {
   var output = '';
   var lastColorLevel = 0;
@@ -159,15 +168,11 @@ function toHTML(text) {
       }
     }
 
-    output += encodeURIComponent(_char);
+    output += stringToHtmlEntities(_char);
   }
 
   cleanStyles();
   return output;
-}
-
-function randomRange(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 var obfuscates = [];

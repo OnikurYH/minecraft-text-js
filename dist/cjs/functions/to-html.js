@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const constants_1 = require("../constants");
+const utils_1 = require("../utils");
 function toHTML(text) {
     let output = '';
     let lastColorLevel = 0;
@@ -67,7 +68,7 @@ function toHTML(text) {
                 continue;
             }
         }
-        output += encodeURIComponent(char);
+        output += utils_1.stringToHtmlEntities(char);
     }
     cleanStyles();
     return output;
