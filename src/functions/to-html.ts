@@ -17,6 +17,13 @@ export function toHTML (text: string) {
 
   for (let i = 0; i < text.length; i++) {
     let char = text[i];
+    let nextChar = text[i + 1];
+
+    if (char === '\\' && nextChar === 'n') {
+      output += '<br>';
+      i += 2;
+      continue;
+    }
 
     if (char === '&' || char === '\u00A7') {
       let nextCode = text[i + 1];

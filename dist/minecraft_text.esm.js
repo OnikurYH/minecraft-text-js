@@ -99,6 +99,13 @@ function toHTML(text) {
 
   for (var i = 0; i < text.length; i++) {
     var _char = text[i];
+    var nextChar = text[i + 1];
+
+    if (_char === '\\' && nextChar === 'n') {
+      output += '<br>';
+      i += 2;
+      continue;
+    }
 
     if (_char === '&' || _char === "\xA7") {
       var nextCode = text[i + 1];
